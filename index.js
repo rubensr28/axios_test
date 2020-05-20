@@ -1,16 +1,10 @@
 var axios = require("axios");
 
-var token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik56UXpPRGN4UVRVeVFqRTBNRE16TURkR1FUY3dOVUl3UmtSR016azVSamxEUVRGR01qUTNOQSJ9.eyJlbWFpbCI6InJ1YmVuc19yMjhAaG90bWFpbC5jb20iLCJuYW1lIjoicnViZW5zX3IyOEBob3RtYWlsLmNvbSIsIm5pY2tuYW1lIjoicnViZW5zX3IyOCIsInBpY3R1cmUiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci9lY2FlOGYyMjAxMDViOWViMjAzMzljNzU2MDgzZjVlND9zPTQ4MCZyPXBnJmQ9aHR0cHMlM0ElMkYlMkZjZG4uYXV0aDAuY29tJTJGYXZhdGFycyUyRnJ1LnBuZyIsInVzZXJfbWV0YWRhdGEiOnsibmFtZSI6IlJ1YmVucyBSb2RyaWdvIE1hcnF1ZXMiLCJmaXJzdF9sb2dpbiI6ZmFsc2V9LCJsYXN0X3Bhc3N3b3JkX3Jlc2V0IjoiMjAyMC0wNS0xOFQxNDoyMzo1MS4wMjJaIiwiYXBwX21ldGFkYXRhIjp7ImZ1bmRJZCI6MTk0MDA0fSwiZnVuZElkIjoxOTQwMDQsImNsaWVudElEIjoiRVF5WjAzb3l3QW1nMUw2NzNXTDY5M1hscnlXcFFRdGoiLCJjcmVhdGVkX2F0IjoiMjAyMC0wNC0yN1QxODo1MToyOC41MzVaIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImlkZW50aXRpZXMiOlt7InVzZXJfaWQiOiI1ZWE3MjliMDYwMTliYjBjZDRiYTAzNWIiLCJwcm92aWRlciI6ImF1dGgwIiwiY29ubmVjdGlvbiI6IlVzZXJuYW1lLVBhc3N3b3JkLUF1dGhlbnRpY2F0aW9uIiwiaXNTb2NpYWwiOmZhbHNlfV0sInVwZGF0ZWRfYXQiOiIyMDIwLTA1LTE5VDE3OjI1OjU2LjkzN1oiLCJ1c2VyX2lkIjoiYXV0aDB8NWVhNzI5YjA2MDE5YmIwY2Q0YmEwMzViIiwiaXNzIjoiaHR0cHM6Ly9nb3JpbGFpbnZlc3QtcHJvZC5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWVhNzI5YjA2MDE5YmIwY2Q0YmEwMzViIiwiYXVkIjoiRVF5WjAzb3l3QW1nMUw2NzNXTDY5M1hscnlXcFFRdGoiLCJpYXQiOjE1ODk5MDkxNTcsImV4cCI6MTU4OTkyNzE1N30.QRaJo37zzJ5knVL5KchzNWTUAd_31iAzcCAYkuH-mkZU651a0FQwf6sqbBzAUXGU6BzMKACTRsj500yXRWHcfxl2DDCHY0OXAJmCRCB1gDxBnOgi6TjuQpcVLggZaLKqLvxOb2JrwF3SAGsPToU6eYX5bkqPMesAYotkwYYoqgK-UKVAHhHy2HtLv292lUQnSyjYADL1zKDtXJlnRuxJ_6rXJ4GoM9c_Dk7fUV4NIWIIxCdo5R-MJx9FbwNJdfw6SuUL8Ep5pYVeaZn_VOJCR_0ExtfXnuJ_v5iXB-36toiUdsq-yQyol-M0tT-c7jDEqQP0LZUmV3Ug5137PmYYrA";
+var token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik56UXpPRGN4UVRVeVFqRTBNRE16TURkR1FUY3dOVUl3UmtSR016azVSamxEUVRGR01qUTNOQSJ9.eyJlbWFpbCI6InJ1YmVuc19yMjhAaG90bWFpbC5jb20iLCJuYW1lIjoicnViZW5zX3IyOEBob3RtYWlsLmNvbSIsIm5pY2tuYW1lIjoicnViZW5zX3IyOCIsInBpY3R1cmUiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci9lY2FlOGYyMjAxMDViOWViMjAzMzljNzU2MDgzZjVlND9zPTQ4MCZyPXBnJmQ9aHR0cHMlM0ElMkYlMkZjZG4uYXV0aDAuY29tJTJGYXZhdGFycyUyRnJ1LnBuZyIsInVzZXJfbWV0YWRhdGEiOnsibmFtZSI6IlJ1YmVucyBSb2RyaWdvIE1hcnF1ZXMiLCJmaXJzdF9sb2dpbiI6ZmFsc2V9LCJsYXN0X3Bhc3N3b3JkX3Jlc2V0IjoiMjAyMC0wNS0xOFQxNDoyMzo1MS4wMjJaIiwiYXBwX21ldGFkYXRhIjp7ImZ1bmRJZCI6MTk0MDA0fSwiZnVuZElkIjoxOTQwMDQsImNsaWVudElEIjoiRVF5WjAzb3l3QW1nMUw2NzNXTDY5M1hscnlXcFFRdGoiLCJjcmVhdGVkX2F0IjoiMjAyMC0wNC0yN1QxODo1MToyOC41MzVaIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImlkZW50aXRpZXMiOlt7InVzZXJfaWQiOiI1ZWE3MjliMDYwMTliYjBjZDRiYTAzNWIiLCJwcm92aWRlciI6ImF1dGgwIiwiY29ubmVjdGlvbiI6IlVzZXJuYW1lLVBhc3N3b3JkLUF1dGhlbnRpY2F0aW9uIiwiaXNTb2NpYWwiOmZhbHNlfV0sInVwZGF0ZWRfYXQiOiIyMDIwLTA1LTIwVDEyOjE0OjUzLjE2MFoiLCJ1c2VyX2lkIjoiYXV0aDB8NWVhNzI5YjA2MDE5YmIwY2Q0YmEwMzViIiwiaXNzIjoiaHR0cHM6Ly9nb3JpbGFpbnZlc3QtcHJvZC5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWVhNzI5YjA2MDE5YmIwY2Q0YmEwMzViIiwiYXVkIjoiRVF5WjAzb3l3QW1nMUw2NzNXTDY5M1hscnlXcFFRdGoiLCJpYXQiOjE1ODk5NzY4OTMsImV4cCI6MTU4OTk5NDg5M30.X1GoDvGY2mwNWzglJEOKLueVUMQQWY-pIBuY2JmvZjIkhYtwToP4wEiibNrOzCy1eKusPPYMJU5qjWwm9bQ-x77zCErkpEMqf2Q0EsjTkscXdhcqWSWtjBHyrXp7mgJbbYlbuS5e8tpqj5nbATOR9VUQZ6pLJCa9nqjv54NFawPoU4g5EErXLN7g-Ij76U5kl8318n6mqPbfnPmhBN5TFMc1itv4TKktq6Fh50aXHMdbxdWaK4EC0KI_SK27O51GpZlRxdoHFneyhuHzlCZqT5aIlqIfEa7YscdctBp3Q5fi9psd8cNH9muxR_H0RuAaELoyJoGLiNGAYb3eoN_Sug";
 var fundId = 194004;
 
-getStocks().then((r) => r.forEach(t => showTrade(t)));
-calculaPosicao();
-
-//getTrades()
-//getPortifolio()
-//getPrice()
-//getProducts()
-//postTrade()
+//getStocks().then((r) => r.forEach(t => showTrade(t)));
+showPosicoes();
 
 function getTrades() {
     return axios.get(`https://app.gorilainvest.com.br/api/booker?fundId=${fundId}`,
@@ -19,18 +13,14 @@ function getTrades() {
                 'Authorization': `Bearer ${token}`
             }
         })
-    // .then(function (response) {
-    //     console.log(response.data);
-    //     return response.data;
-    // }).catch(function (error) {
-    //     console.log(error);
-    // }).then(function () {
-    //     // always executed
-    // });
 }
 
 function showTrade(t){
     console.log(`${t.TradeDate} ${t.SecurityName} ${t.Quantity} ${t.Price} ${t.Sice == 1 ? "BUY" : "SELL"}`);
+}
+async function showPosicoes(){
+    let posicoes = await calculaPosicao();
+    console.log(posicoes);
 }
 
 function getProducts() {
@@ -40,13 +30,6 @@ function getProducts() {
                 'Authorization': `Bearer ${token}`
             }
         })
-    // .then(function (response) {
-    //     console.log(response.data);
-    // }).catch(function (error) {
-    //     console.log(error);
-    // }).then(function () {
-    //     // always executed
-    // });
 }
 function getPrice(securityName, minDate, maxDate) {
     return axios.get(`https://app.gorila.com.br/api/price?securityName=${securityName}&minDate=${minDate}&maxDate=${maxDate}`,
@@ -55,13 +38,6 @@ function getPrice(securityName, minDate, maxDate) {
                 'Authorization': `Bearer ${token}`
             }
         });
-    //.then(function (response) {
-    //     console.log(response.data);
-    // }).catch(function (error) {
-    //     console.log(error);
-    // }).then(function () {
-    //     // always executed
-    // });
 }
 function getPortifolio() {
     return axios.get(`https://app.gorila.com.br/api/portfolio/194004/positions?includeNoPrice=true`,
@@ -69,14 +45,7 @@ function getPortifolio() {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
-        }).then(function (response) {
-            console.log(response.data);
-        }).catch(function (error) {
-            console.log(error);
-        }).then(function () {
-            // always executed
-        });
-
+        })
 }
 
 function postTrade() {
@@ -100,12 +69,6 @@ function postTrade() {
             'Authorization': `Bearer ${token}`
         }
     })
-        .then(function (response) {
-            console.log(response.data);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
 }
 
 async function getStocks() {
@@ -116,59 +79,51 @@ async function getStocks() {
 
         response.data.Accounts.forEach(element => {
             element.Trades.forEach(trade => {
-                if (trade.ProductTypeName === 'STOCK' && trade.ProductSubTypeName === 'STOCK_LOCAL')
+                if (trade.ProductTypeName === 'STOCK')
                     stocks.push(trade);
             })
         });
 
-        return stocks;
+        return agruparPor(stocks, "SecurityName");
 
     } catch (error) {
         console.log(error);
     }
 }
 
-function calculaPosicao() {
-    var stocks = [];
-    getTrades().then(function (response) {
-        response.data.Accounts.forEach(element => {
-            element.Trades.forEach(trade => {
-                if (trade.ProductTypeName === 'STOCK' && trade.ProductSubTypeName === 'STOCK_LOCAL')
-                    stocks.push(trade);
-            })
-        });
-        var stocksGrouped = agruparPor(stocks, "SecurityName")
-        var posicoes = [];
-        for (let key in stocksGrouped) {
-            let posicao = { RefDate: new Date().toLocaleDateString(), SecurityName: '', Quantity: 0, Price: 0.00, Total: 0.00 }
-            let quant = 0
-            let trades = stocksGrouped[key];
-            posicao.SecurityName = trades[0].SecurityName;
-            trades.forEach((trade) => {
-                if (trade.Side == 2) {
-                    quant -= trade.Quantity;
-                }
-                else {
-                    quant += trade.Quantity
-                }
-                posicao.Quantity = quant;
-
-            });
-            let date = new Date(posicao.RefDate).toISOString().split('T')[0]
-            posicao.RefDate=date;
-            getPrice(posicao.SecurityName, date, date).then((response) => {
-                posicao.Price=response.data[0].PriceOpen;
-                posicao.Total = posicao.Price * posicao.Quantity
-                posicoes.push(posicao)
-                console.log(posicoes)
-            }).catch(function (error) {
-                console.log(error)
-            });
-        }
+async function getStockPrice(securityName, refDate){
+    try {
+        let response = await getPrice(securityName,refDate,refDate);
+        return response.data[0].PriceOpen;
+    }catch(error){
+        console.error(error)
     }
-    ).catch(function (error) {
-        console.log(error)
-    });
+}
+
+async function calculaPosicao() {
+    try{
+
+        var stocks = await getStocks();
+        var posicoes = [];
+        for (let key in stocks){
+            let posicao = {RefDate: (new Date()).toISOString().slice(0,10).replace(/-/g,"-"), SecurityName: '', Quantity: 0, Price: 0.00, Total: 0.00 };
+            posicao.SecurityName = stocks[key][0].SecurityName;
+            stocks[key].forEach(trade=>{
+                if(trade.Side==1){
+                    posicao.Quantity+=trade.Quantity;
+                }
+                else{
+                    posicao.Quantity-=trade.Quantity;
+                }
+            });
+            posicao.Price = await getStockPrice(posicao.SecurityName,posicao.RefDate);
+            posicao.Total = posicao.Price * posicao.Quantity;
+            posicoes.push(posicao);
+        }
+        return posicoes;
+    }catch(error){
+        console.error(error);
+    }
 }
 
 function agruparPor(objetoArray, propriedade) {
